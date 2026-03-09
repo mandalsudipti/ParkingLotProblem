@@ -47,10 +47,11 @@ public class Main {
 
         // Book a parking spot
         ParkingService parkingService = new ParkingService();
-        parkingService.bookParkingSpot(avaialableSpots.get(0));
+        TicketModel ticket = parkingService.bookParkingSpot(avaialableSpots.get(0), car);
+        System.out.println("ticket created at " + ticket.getCreatedAt());
 
         // check availability again
-        availabilityService.getAvailableSpots(car.getSize(), parkingLot.getLevels().get(0));
+        avaialableSpots = availabilityService.getAvailableSpots(car.getSize(), parkingLot.getLevels().get(0));
 
     }
 }

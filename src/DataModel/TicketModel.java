@@ -19,7 +19,7 @@ public class TicketModel {
         return this.createdAt ;
     }
 
-    public VehicleModel getParkedVehicle(){
+    public VehicleModel getParkedVehicle() {
         return this.vehicle;
     }
 }

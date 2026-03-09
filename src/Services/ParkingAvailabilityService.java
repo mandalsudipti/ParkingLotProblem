@@ -14,7 +14,7 @@ public class ParkingAvailabilityService {
     public List<ParkingSpotModel> getAvailableSpots(VehicleSizeEnum vehicleSize, ParkingLevelModel level){
         List<ParkingSpotModel> availableSpots = new ArrayList<>();
         level.listParkingspots().forEach(spot ->{
-            if(spot.getSpotSize().equals(vehicleSize)){
+            if(spot.getSpotSize().equals(vehicleSize) && !spot.isParkingSpotOccupied()){
                 System.out.println("available " + spot.getSpotNumber() + " for parking");
                 availableSpots.add(spot);
             }
