@@ -15,7 +15,15 @@ public class BillModel {
         this.createdAt = LocalDateTime.now();
     }
 
-    public void displayBill(){
-        System.out.println("Bill no " + this.billNumber + " has been created at " + this.createdAt + " with total amount of " + this.billAmount);
+    public double getBillAmount(){
+        return this.billAmount ;
+    }
+
+    public String getBillNumber(){
+        return this.billNumber ;
+    }
+
+    public LocalDateTime getCreatedAt(){
+        return this.createdAt ;
     }
 }

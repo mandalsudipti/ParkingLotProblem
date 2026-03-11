@@ -12,7 +12,7 @@ public class ParkingService {
             System.out.println("parking spot is not available. Try another spot");
             throw new CustomParkingLotException("parking spot is not available. Try another spot");
         }
-        if(!parkingSpot.getSpotSize().equals(vehicle.getSize())){
+        if(!parkingSpot.canAccomodateVehicle(vehicle)){
            System.out.println("Vehicle size mismatch with parking spot. Try another spot");
            throw new CustomParkingLotException("Vehicle size mismatch with parking spot. Try another spot");
         }
@@ -26,7 +26,7 @@ public class ParkingService {
         spot.releaseParkingSpot();
     }
 
-    public TicketModel createTicket(String ticketNumber, VehicleModel vehicle, ParkingSpotModel spot){
+    private TicketModel createTicket(String ticketNumber, VehicleModel vehicle, ParkingSpotModel spot){
         TicketModel ticket = new TicketModel(ticketNumber , vehicle, spot);
         System.out.println("ticket number " + ticket.getTicketNumber());
         return ticket ;

@@ -19,6 +19,10 @@ public class BillingService {
         }
         double billAmount = pricingStrategy.computeBillingAmount(ticket.getCreatedAt());
         BillModel bill = new BillModel("billNumber" + LocalDateTime.now(), ticket, billAmount);
-        bill.displayBill();
+        displayBill(bill);
+    }
+
+    private void displayBill(BillModel bill){
+        System.out.println("Bill no " + bill.getBillNumber() + " has been created at " + bill.getCreatedAt() + " with total amount of " + bill.getBillAmount());
     }
 }
