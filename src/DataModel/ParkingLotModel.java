@@ -1,5 +1,6 @@
 package DataModel;
 
+import java.util.Collections;
 import java.util.List;
 
 public class ParkingLotModel {
@@ -9,10 +10,10 @@ public class ParkingLotModel {
     private List<GateModel> gates;
 
     public ParkingLotModel(String id, String name, List<ParkingLevelModel> levels, List<GateModel> gates){
-        this.gates = gates ;
+        this.gates = Collections.synchronizedList(gates) ;
         this.id = id ;
         this.name = name ;
-        this.levels = levels ;
+        this.levels = Collections.synchronizedList(levels) ;
         System.out.println("parking lot created with " + this.levels.size() + " levels and " + this.gates.size() + " gates");
     }
 

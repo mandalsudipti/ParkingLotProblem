@@ -1,11 +1,12 @@
 package DataModel;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ParkingLevelModel {
     private final Integer levelNumber ;
-    private List<ParkingSpotModel> parkingSpots = new ArrayList<>();
+    private List<ParkingSpotModel> parkingSpots = Collections.synchronizedList(new ArrayList<>());
 
     public  ParkingLevelModel(Integer levelNumber){
         this.levelNumber = levelNumber ;
