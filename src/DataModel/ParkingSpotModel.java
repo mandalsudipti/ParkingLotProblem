@@ -1,5 +1,6 @@
 package DataModel;
 
+import CustomException.CustomParkingLotException;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import java.time.* ;
 
@@ -31,6 +32,9 @@ public class ParkingSpotModel {
     }
 
     public void releaseParkingSpot(){
+        if(this.isOccupied.equals(false)){
+            throw new CustomParkingLotException("Expired Ticket. No vehicle is booked under this ticket");
+        }
         this.emptyAt = LocalDateTime.now();
         this.isOccupied = false ;
     }

@@ -1,5 +1,6 @@
 package Services;
 
+import CustomException.CustomParkingLotException;
 import DataModel.BillModel;
 import DataModel.TicketModel;
 import PricingStrategy.PricingStrategyInterface;
@@ -13,6 +14,9 @@ public class BillingService {
         this.pricingStrategy = pricingStrategy ;
     }
     public void generateBill(TicketModel ticket){
+        if(ticket.getParkedSpot().isParkingSpotOccupied()){
+            throw new CustomParkingLotException("Release parking spot before generating bill.");
+        }
         double billAmount = pricingStrategy.computeBillingAmount(ticket.getCreatedAt());
         BillModel bill = new BillModel("billNumber" + LocalDateTime.now(), ticket, billAmount);
         bill.displayBill();

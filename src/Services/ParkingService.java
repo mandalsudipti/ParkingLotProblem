@@ -1,21 +1,20 @@
 package Services;
 
+import CustomException.CustomParkingLotException;
 import DataModel.ParkingSpotModel;
 import DataModel.TicketModel;
 import DataModel.VehicleModel;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.time.LocalDateTime;
 
 public class ParkingService {
     public TicketModel bookParkingSpot(ParkingSpotModel parkingSpot, VehicleModel vehicle){
         if(parkingSpot.isParkingSpotOccupied()){
             System.out.println("parking spot is not available. Try another spot");
-            throw new NotImplementedException();
+            throw new CustomParkingLotException("parking spot is not available. Try another spot");
         }
         if(!parkingSpot.getSpotSize().equals(vehicle.getSize())){
            System.out.println("Vehicle size mismatch with parking spot. Try another spot");
-           throw new NotImplementedException();
+           throw new CustomParkingLotException("Vehicle size mismatch with parking spot. Try another spot");
         }
         parkingSpot.blockParkingSpot();
         System.out.println("parking spot " + parkingSpot.getSpotNumber() + " is booked " + parkingSpot.isParkingSpotOccupied());
