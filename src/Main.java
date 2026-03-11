@@ -1,4 +1,7 @@
 import DataModel.*;
+import PricingStrategy.LargeVehiclePricingStrategy;
+import PricingStrategy.PricingStrategyInterface;
+import Services.BillingService;
 import Services.ParkingAvailabilityService;
 import Services.ParkingService;
 
@@ -49,6 +52,16 @@ public class Main {
         ParkingService parkingService = new ParkingService();
         TicketModel ticket = parkingService.bookParkingSpot(avaialableSpots.get(0), car);
         System.out.println("ticket created at " + ticket.getCreatedAt());
+
+        // check availability again
+        avaialableSpots = availabilityService.getAvailableSpots(car.getSize(), parkingLot.getLevels().get(0));
+
+        // release parking spot
+        parkingService.releaseParkingSpot(ticket);
+        // get a bill
+        PricingStrategyInterface pricingStrategy = new LargeVehiclePricingStrategy();
+        BillingService billingService = new BillingService(pricingStrategy);
+        billingService.generateBill(ticket);
 
         // check availability again
         avaialableSpots = availabilityService.getAvailableSpots(car.getSize(), parkingLot.getLevels().get(0));

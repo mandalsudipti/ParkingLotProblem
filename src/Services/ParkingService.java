@@ -22,12 +22,15 @@ public class ParkingService {
         return createTicket("ticket_number"  + vehicle.getVehicleNumber() + "*--*" + LocalDateTime.now(), vehicle, parkingSpot);
     }
 
-    public boolean releaseParkingSpot(){
-        throw new NotImplementedException();
+    public boolean releaseParkingSpot(TicketModel ticket){
+        ParkingSpotModel spot = ticket.getParkedSpot();
+        spot.releaseParkingSpot();
+        return true;
     }
 
     public TicketModel createTicket(String ticketNumber, VehicleModel vehicle, ParkingSpotModel spot){
         TicketModel ticket = new TicketModel(ticketNumber , vehicle, spot);
+        System.out.println("ticket number " + ticket.getTicketNumber());
         return ticket ;
     }
 }
