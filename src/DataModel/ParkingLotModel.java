@@ -7,14 +7,12 @@ public class ParkingLotModel {
     private final String id ;
     private final String name ;
     private List<ParkingLevelModel> levels ;
-    private List<GateModel> gates;
 
-    public ParkingLotModel(String id, String name, List<ParkingLevelModel> levels, List<GateModel> gates){
-        this.gates = Collections.synchronizedList(gates) ;
+    public ParkingLotModel(String id, String name, List<ParkingLevelModel> levels){
         this.id = id ;
         this.name = name ;
         this.levels = Collections.synchronizedList(levels) ;
-        System.out.println("parking lot created with " + this.levels.size() + " levels and " + this.gates.size() + " gates");
+        System.out.println("parking lot created with " + this.levels.size() + " levels");
     }
 
     public void addLevels(ParkingLevelModel level){
@@ -23,9 +21,5 @@ public class ParkingLotModel {
 
     public List<ParkingLevelModel> getLevels(){
         return this.levels ;
-    }
-
-    public List<GateModel> getGates(){
-        return this.gates ;
     }
 }

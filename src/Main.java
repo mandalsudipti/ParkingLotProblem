@@ -16,12 +16,6 @@ public class Main {
         System.out.printf("Hello and welcome!\n");
 
         // create a parking lot
-        GateModel entryGate1 = new GateModel(1, GateTypeEnum.ENTRY_GATE);
-        GateModel entryGate2 = new GateModel(2, GateTypeEnum.ENTRY_GATE);
-        GateModel exitGate1 = new GateModel(3, GateTypeEnum.EXIT_GATE);
-        GateModel exitGate2 = new GateModel(4, GateTypeEnum.EXIT_GATE);
-        List<GateModel> gates  = new ArrayList<GateModel>(Arrays.asList(entryGate1, entryGate2, exitGate1, exitGate2));
-
         ParkingLevelModel level1 = new ParkingLevelModel(1);
         level1.addParkingSpots(new ParkingSpotModel("spot1_1", VehicleSizeEnum.LARGE));
         level1.addParkingSpots(new ParkingSpotModel("spot1_2" , VehicleSizeEnum.LARGE));
@@ -39,7 +33,7 @@ public class Main {
 
         List<ParkingLevelModel> levels = new ArrayList<ParkingLevelModel>(Arrays.asList(level1, level2, level3));
 
-        ParkingLotModel parkingLot = new ParkingLotModel("parkingLot1", "parking lot", levels, gates);
+        ParkingLotModel parkingLot = new ParkingLotModel("parkingLot1", "parking lot", levels);
 
         // create vehicle
         VehicleModel car = new VehicleModel("vehicle_car_1", VehicleTypeEnum.CAR, VehicleSizeEnum.LARGE);
